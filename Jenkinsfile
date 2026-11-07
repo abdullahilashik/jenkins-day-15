@@ -6,6 +6,12 @@ pipeline {
         GIT_REPO = 'jenkins-day-15'
     }
 
+    parameters {
+        string(name: 'GIT_USER', defaultValue: 'abdullahilashik', description: 'Github username'),
+        string(name: 'GIT_REPO', defaultValue: 'jenkins-day-15', description: 'Github repository name'),
+        choice(name: 'BRANCH', choices: ['master','dev'], description: 'Select the branch to build')
+    }
+
     stages {
 
         stage('Prepare') {
@@ -16,7 +22,9 @@ pipeline {
         }
         stage('Commit') {
             steps {
-                git 'https://github.com/abdullahilashik/jenkins-day-15.git'
+                echo 'Optional git pull to see if SCS does the job!'
+                // git 'https://github.com/abdullahilashik/jenkins-day-15.git'
+                // git branch: "${BRANCH}", url: "https://github.com/${GIT_USER}/${GIT_REPO}.git"
             }
         }        
     }
