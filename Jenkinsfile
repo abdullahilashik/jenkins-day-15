@@ -36,6 +36,8 @@ pipeline {
                     }
                     else if(params.BRANCH == 'dev') {
                         echo 'Building the dev branch....'
+                    } else {
+                        echo 'Invalid branch selected. Please choose either master or dev.'
                     }
                 }
             }
