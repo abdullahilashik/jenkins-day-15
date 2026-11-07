@@ -10,6 +10,7 @@ pipeline {
         string(name: 'GIT_USER', defaultValue: 'abdullahilashik', description: 'Github username')
         string(name: 'GIT_REPO', defaultValue: 'jenkins-day-15', description: 'Github repository name')
         choice(name: 'BRANCH', choices: ['master','dev'], description: 'Select the branch to build')
+        booleanParam(name: 'PUSH_IMAGE', defaultValue: false, description: 'Push the image to the registry after build')
     }
 
     stages {
@@ -40,6 +41,16 @@ pipeline {
                         echo 'Invalid branch selected. Please choose either master or dev.'
                     }
                 }
+            }
+        }
+
+        stage('Push Image') {
+            when {
+                expression { params.PUSH_IMAGE == true }
+            }
+            steps {
+                echo 'Pushing the image to the registry...'
+                // Add your image push commands here
             }
         }
     }
