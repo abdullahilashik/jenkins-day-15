@@ -7,8 +7,8 @@ pipeline {
     }
 
     parameters {
-        string(name: 'GIT_USER', defaultValue: 'abdullahilashik', description: 'Github username'),
-        string(name: 'GIT_REPO', defaultValue: 'jenkins-day-15', description: 'Github repository name'),
+        string(name: 'GIT_USER', defaultValue: 'abdullahilashik', description: 'Github username')
+        string(name: 'GIT_REPO', defaultValue: 'jenkins-day-15', description: 'Github repository name')
         choice(name: 'BRANCH', choices: ['master','dev'], description: 'Select the branch to build')
     }
 
