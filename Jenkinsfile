@@ -26,6 +26,32 @@ pipeline {
                 // git 'https://github.com/abdullahilashik/jenkins-day-15.git'
                 // git branch: "${BRANCH}", url: "https://github.com/${GIT_USER}/${GIT_REPO}.git"
             }
-        }        
+        }
+
+        stage('decision') {
+            steps {
+                script {
+                    if(params.BRANCH == 'master') {
+                        echo 'Building the master branch....'
+                    }
+                    else if(params.BRANCH == 'dev') {
+                        echo 'Building the dev branch....'
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build completed successfully!'
+        }
+        failure {
+            echo 'Build failed. Check your email for details'
+        }
+        always {
+            echo 'Cleaning up the workspace...'
+            cleanWs()
+        }
     }
 }
