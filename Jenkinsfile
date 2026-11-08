@@ -50,8 +50,8 @@ pipeline {
             steps {
                 echo 'Building the Docker image...'
                 bat 'docker --version'
-                bat 'docker build -t ${IMAGE_NAME} .'
-                bat 'docker tag ${IMAGE_NAME} ${DOCKER_DOMAIN}/${IMAGE_NAME}:latest'
+                bat 'docker build -t jenkins-web .'
+                bat 'docker tag jenkins-web ashikarefin/jenkins-web:latest'
             }
         }
 
@@ -62,7 +62,7 @@ pipeline {
             steps {
                 echo 'Pushing the image to the registry...'
                 // Add your image push commands here                
-                bat 'docker push ${DOCKER_DOMAIN}/${IMAGE_NAME}:latest'
+                bat 'docker push ashikarefin/jenkins-web:latest'
             }
         }
 
