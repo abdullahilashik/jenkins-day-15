@@ -65,10 +65,11 @@ pipeline {
             }
             steps {
                 echo 'Pushing the image to the registry...'
-                withCredentials([usernamePassword(credentialsId: 'docker-ashikarefin', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
-                    bat 'echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin'
-                    bat 'docker push ashikarefin/jenkins-web:latest'
-                }
+                // withCredentials([usernamePassword(credentialsId: 'docker-ashikarefin', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
+                //     bat 'echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin'
+                //     bat 'docker push ashikarefin/jenkins-web:latest'
+                // }
+                bat 'docker push ashikarefin/jenkins-web:latest'
             }
         }
 
