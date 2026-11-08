@@ -44,6 +44,14 @@ pipeline {
             }
         }
 
+        stage('Build') {
+            steps {
+                sh 'docker build -t ${GIT_USER}/${GIT_REPO}:${BRANCH} .'
+                sh 'docker tag ${GIT_USER}/${GIT_REPO}:${BRANCH} ${GIT_USER}/${GIT_REPO}:latest'
+                sh 'docker push ${GIT_USER}/${GIT_REPO}:${BRANCH}'
+            }
+        }
+
         stage('Push Image') {
             when {
                 expression { params.PUSH_IMAGE == true }
@@ -53,6 +61,7 @@ pipeline {
                 // Add your image push commands here
             }
         }
+
     }
 
     post {
