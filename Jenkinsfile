@@ -66,7 +66,11 @@ pipeline {
             steps {
                 echo 'Pushing the image to the registry...'
                 // Add your image push commands here                
-                bat 'docker push ashikarefin/jenkins-web:latest'
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-ashikarefin') {
+                        bat 'docker push ashikarefin/jenkins-web:latest'
+                    }
+                }
             }
         }
 
