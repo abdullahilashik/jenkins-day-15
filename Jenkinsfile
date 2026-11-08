@@ -7,7 +7,7 @@ pipeline {
         DOCKER_DOMAIN = "ashikarefin"
         IMAGE_NAME = "jenkins-web"
 
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-ashikarefin')
+        // DOCKERHUB_CREDENTIALS = credentials('dockerhub-ashikarefin')
     }
 
     parameters {
