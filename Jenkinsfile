@@ -19,7 +19,7 @@ pipeline {
 
         stage('Prepare') {
             steps {
-                cleanWs()
+                // cleanWs()
                 echo "Preparing the workspace for ${GIT_USER}/${GIT_REPO}"
             }
         }
