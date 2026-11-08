@@ -71,9 +71,11 @@ pipeline {
     post {
         success {
             echo 'Build completed successfully!'
+            emailext body: "The build for ${GIT_USER}/${GIT_REPO} on branch ${BRANCH} has completed successfully.", subject: "Build Success", to: 'abdullah.ashik.arefin@gmail.com'
         }
         failure {
             echo 'Build failed. Check your email for details'
+            emailext body: "The build for ${GIT_USER}/${GIT_REPO} on branch ${BRANCH} has failed.", subject: "Build Failed", to: 'abdullah.ashik.arefin@gmail.com'
         }
         always {
             echo 'Cleaning up the workspace...'
