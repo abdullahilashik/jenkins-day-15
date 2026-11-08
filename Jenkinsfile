@@ -6,6 +6,8 @@ pipeline {
         GIT_REPO = 'jenkins-day-15'
         DOCKER_DOMAIN = "ashikarefin"
         IMAGE_NAME = "jenkins-web"
+
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-ashikarefin')
     }
 
     parameters {
