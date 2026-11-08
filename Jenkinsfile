@@ -26,7 +26,7 @@ pipeline {
         stage('Commit') {
             steps {
                 echo 'Optional git pull to see if SCS does the job!'
-                // git 'https://github.com/abdullahilashik/jenkins-day-15.git'
+                git 'https://github.com/abdullahilashik/jenkins-day-15.git'
                 // git branch: "${BRANCH}", url: "https://github.com/${GIT_USER}/${GIT_REPO}.git"
             }
         }
