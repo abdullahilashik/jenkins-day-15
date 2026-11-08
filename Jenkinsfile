@@ -73,6 +73,16 @@ pipeline {
             }
         }
 
+        stage('Deploy') {
+            when {
+                expression { params.PUSH_IMAGE == true }
+            }
+            steps {
+                echo 'Triggering Ansible deployment on target nodes...'
+                bat 'docker exec ansible-controller ansible-playbook -i inventory.ini deploy.yml'
+            }
+        }
+
     }
 
     post {
