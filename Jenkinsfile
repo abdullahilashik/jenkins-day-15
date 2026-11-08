@@ -77,7 +77,16 @@ pipeline {
             when {
                 expression { params.PUSH_IMAGE == true }
             }
+            // steps {
+            //     echo 'Triggering Ansible deployment on target nodes...'
+            //     bat 'docker exec ansible-controller ansible-playbook -i inventory.ini deploy.yml'
+            // }
+
             steps {
+                echo 'Copying configuration files to ansible-controller...'
+                bat 'docker cp deploy.yml ansible-controller:/workspace/deploy.yml'
+                bat 'docker cp inventory.ini ansible-controller:/workspace/inventory.ini'
+                
                 echo 'Triggering Ansible deployment on target nodes...'
                 bat 'docker exec ansible-controller ansible-playbook -i inventory.ini deploy.yml'
             }
