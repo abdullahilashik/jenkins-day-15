@@ -48,7 +48,6 @@ pipeline {
             steps {
                 sh 'docker build -t ${GIT_USER}/${GIT_REPO}:${BRANCH} .'
                 sh 'docker tag ${GIT_USER}/${GIT_REPO}:${BRANCH} ${GIT_USER}/${GIT_REPO}:latest'
-                sh 'docker push ${GIT_USER}/${GIT_REPO}:${BRANCH}'
             }
         }
 
@@ -58,7 +57,8 @@ pipeline {
             }
             steps {
                 echo 'Pushing the image to the registry...'
-                // Add your image push commands here
+                // Add your image push commands here                
+                sh 'docker push ${GIT_USER}/${GIT_REPO}:${BRANCH}'
             }
         }
 
