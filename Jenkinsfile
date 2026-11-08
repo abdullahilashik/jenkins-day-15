@@ -48,6 +48,7 @@ pipeline {
 
         stage('Build') {
             steps {
+                echo 'Building the Docker image...'
                 // sh 'docker build -t ${IMAGE_NAME} .'
                 // sh 'docker tag ${IMAGE_NAME} ${DOCKER_DOMAIN}/${IMAGE_NAME}:latest'
             }
