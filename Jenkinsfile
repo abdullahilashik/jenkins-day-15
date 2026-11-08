@@ -4,6 +4,8 @@ pipeline {
     environment {
         GIT_USER = 'abdullahilashik'
         GIT_REPO = 'jenkins-day-15'
+        DOCKER_DOMAIN = "ashikarefin"
+        IMAGE_NAME = "jenkins-web"
     }
 
     parameters {
@@ -46,8 +48,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker build -t ${GIT_USER}/${GIT_REPO}:${BRANCH} .'
-                sh 'docker tag ${GIT_USER}/${GIT_REPO}:${BRANCH} ${GIT_USER}/${GIT_REPO}:latest'
+                sh 'docker build -t ${IMAGE_NAME} .'
+                sh 'docker tag ${IMAGE_NAME} ${DOCKER_DOMAIN}/${IMAGE_NAME}:latest'
             }
         }
 
@@ -58,7 +60,7 @@ pipeline {
             steps {
                 echo 'Pushing the image to the registry...'
                 // Add your image push commands here                
-                sh 'docker push ${GIT_USER}/${GIT_REPO}:${BRANCH}'
+                sh 'docker push ${DOCKER_DOMAIN}/${IMAGE_NAME}:latest'
             }
         }
 
