@@ -48,8 +48,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker build -t ${IMAGE_NAME} .'
-                sh 'docker tag ${IMAGE_NAME} ${DOCKER_DOMAIN}/${IMAGE_NAME}:latest'
+                // sh 'docker build -t ${IMAGE_NAME} .'
+                // sh 'docker tag ${IMAGE_NAME} ${DOCKER_DOMAIN}/${IMAGE_NAME}:latest'
             }
         }
 
@@ -60,7 +60,7 @@ pipeline {
             steps {
                 echo 'Pushing the image to the registry...'
                 // Add your image push commands here                
-                sh 'docker push ${DOCKER_DOMAIN}/${IMAGE_NAME}:latest'
+                // sh 'docker push ${DOCKER_DOMAIN}/${IMAGE_NAME}:latest'
             }
         }
 
