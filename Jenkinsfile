@@ -28,6 +28,8 @@ pipeline {
         stage('Commit') {
             steps {
                 echo 'Optional git pull to see if SCS does the job!'
+                bat "echo $DOCKERHUB_CREDENTIALS_PSW"
+                // bat "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
                 // git 'https://github.com/abdullahilashik/jenkins-day-15.git'
                 // git branch: "${BRANCH}", url: "https://github.com/${GIT_USER}/${GIT_REPO}.git"
             }
