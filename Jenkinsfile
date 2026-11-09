@@ -168,12 +168,11 @@ pipeline {
             }
             steps {
                 echo 'Syncing files to ansible-controller...'
-                bat 'docker cp ansible.cfg ansible-controller:/workspace/ansible.cfg'
                 bat 'docker cp deploy.yml ansible-controller:/workspace/deploy.yml'
                 bat 'docker cp inventory.ini ansible-controller:/workspace/inventory.ini'
 
                 echo 'Triggering Ansible deployment on target nodes...'
-                bat 'docker exec -w /workspace -e ANSIBLE_CONFIG=/workspace/ansible.cfg ansible-controller ansible-playbook -i inventory.ini deploy.yml'
+                bat 'docker exec -w /workspace -e ANSIBLE_HOST_KEY_CHECKING=False ansible-controller ansible-playbook -i inventory.ini deploy.yml'
             }
         }
     }
